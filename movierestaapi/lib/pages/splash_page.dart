@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:movierestaapi/models/app_config.dart';
+import 'package:movierestaapi/services/http_service.dart';
+import 'package:movierestaapi/services/movie_services.dart';
 
 class SplashPage extends StatefulWidget {
   final VoidCallback onInitilizationComplete;
@@ -34,6 +36,9 @@ class _SplashPageState extends State<SplashPage> {
         API_KEY: configData['API_KEY'],
         BASE_API_URL: configData['BASE_API_URL'],
         BASE_IMAGE_API_KEY: configData['BASE_IMAGE_URL']));
+
+    getIt.registerSingleton<HTTPService>(HTTPService());
+    getIt.registerSingleton<MovieService>(MovieService());
   }
 
   @override
