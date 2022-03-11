@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movierestaapi/models/movie.dart';
 
 class MainPage extends ConsumerWidget {
   double _deviceHeight;
@@ -63,7 +64,14 @@ class MainPage extends ConsumerWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_topBarWidget()],
+        children: [
+          _topBarWidget(),
+          Container(
+            height: _deviceHeight * 0.83,
+            padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
+            child: _movieListViewWidget(),
+          )
+        ],
       ),
     );
   }
@@ -77,7 +85,7 @@ class MainPage extends ConsumerWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [_searchFieldWidget()],
+        children: [_searchFieldWidget(), _categorySelectionWidget()],
       ),
     );
   }
@@ -123,5 +131,28 @@ class MainPage extends ConsumerWidget {
               )))
           .toList(),
     );
+  }
+
+  Widget _movieListViewWidget() {
+    if (moviesList.length != 0) {
+      return ListView.builder(
+          itemCount: moviesList.length,
+          itemBuilder: (ctx, index) {
+            return Padding(
+              padding: EdgeInsets.symmetric(
+                  vertical: _deviceHeight * 0.01, horizontal: 0),
+              child: GestureDetector(
+                onTap: () {},
+                child: Text(moviesList[index].name),
+              ),
+            );
+          });
+    } else {
+      return Center(
+        child: CircularProgressIndicator(
+          backgroundColor: Colors.white,
+        ),
+      );
+    }
   }
 }

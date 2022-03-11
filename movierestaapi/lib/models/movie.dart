@@ -37,3 +37,33 @@ class Movie {
     return "${_appConfig.BASE_IMAGE_API_URL}${this.posterPath}";
   }
 }
+
+List<Movie> moviesList = [
+  Movie(
+      name: "Adolfo",
+      language: "PT-PT",
+      isAdult: false,
+      description: "Oir",
+      posterPath: "Eor",
+      backdropPath: "EOR",
+      rating: 23,
+      releaseDate: "23-12-2012"),
+  Movie(
+      name: "Adolfo Fernando",
+      language: "PT-PT",
+      isAdult: false,
+      description: "Oir",
+      posterPath: "Eor",
+      backdropPath: "EOR",
+      rating: 23,
+      releaseDate: "23-12-2012"),
+  Movie(
+      name: "Madalfo Quende",
+      language: "PT-PT",
+      isAdult: false,
+      description: "Oir",
+      posterPath: "Eor",
+      backdropPath: "EOR",
+      rating: 23,
+      releaseDate: "23-12-2012")
+];
