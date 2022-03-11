@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movierestaapi/models/movie.dart';
+import 'package:movierestaapi/widgets/movie_tile.dart';
 
 class MainPage extends ConsumerWidget {
   double _deviceHeight;
@@ -23,13 +24,15 @@ class MainPage extends ConsumerWidget {
 
   Widget _buildUI() {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      /*Evite overflow na saida do teclado*/
       backgroundColor: Colors.black,
       body: Container(
         width: _deviceWidth,
         height: _deviceHeight,
         child: Stack(
           alignment: Alignment.center,
-          children: [_backgroundWidget()],
+          children: [_backgroundWidget(), _foregroundWidget()],
         ),
       ),
     );
@@ -143,7 +146,11 @@ class MainPage extends ConsumerWidget {
                   vertical: _deviceHeight * 0.01, horizontal: 0),
               child: GestureDetector(
                 onTap: () {},
-                child: Text(moviesList[index].name),
+                child: MovieTile(
+                  movie: moviesList[index],
+                  height: _deviceHeight * 0.20,
+                  width: _deviceWidth * 0.85,
+                ),
               ),
             );
           });
