@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class MainPage extends ConsumerWidget {
   double _deviceHeight;
   double _deviceWidth;
+  List categories = ["Popular", "Upcoming"];
+  String selectedCategory = "Popular";
 
   TextEditingController _searchTextEditingController;
 
@@ -101,6 +103,25 @@ class MainPage extends ConsumerWidget {
             hintStyle: TextStyle(color: Colors.white54),
             hintText: 'Search...'),
       ),
+    );
+  }
+
+  Widget _categorySelectionWidget() {
+    return DropdownButton(
+      value: selectedCategory,
+      dropdownColor: Colors.black38,
+      icon: Icon(Icons.menu),
+      underline: Container(
+        color: Colors.white24,
+        height: 1,
+      ),
+      items: categories
+          .map<DropdownMenuItem>((e) => DropdownMenuItem(
+                  child: Text(
+                e,
+                style: TextStyle(color: Colors.white),
+              )))
+          .toList(),
     );
   }
 }
