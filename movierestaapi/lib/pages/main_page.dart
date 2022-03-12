@@ -18,7 +18,7 @@ class MainPage extends ConsumerWidget {
     _deviceHeight = MediaQuery.of(context).size.height;
     _deviceWidth = MediaQuery.of(context).size.width;
 
-    // TODO: implement build
+    //TODO: implement build ||
     throw _buildUI();
   }
 
@@ -46,11 +46,11 @@ class MainPage extends ConsumerWidget {
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
             image: NetworkImage(
-                "https://google.com" /*TODO Trocar esse endereco por uma que contem imagem*/),
+                "https://google.com" /*TODO => Trocar esse endereco por uma que contem imagem*/),
             fit: BoxFit.cover),
       ),
       child: BackdropFilter(
-        //Todo Aprender sobre isso
+        //Todo => Aprender sobre isso
         filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
         child: Container(
           decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
